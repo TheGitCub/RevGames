@@ -1,0 +1,74 @@
+.games-library-header-container {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-surface);
+    border: 1px solid var(--light-border);
+}
+
+body.dark-mode .games-library-header-container {
+    background-color: #222;
+    border: 1px solid #444;
+}
+
+#games-library-header {
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#games-library-header > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.games-library-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.filter-panel {
+    padding: 10px;
+    background: var(--light-background);
+    border-radius: 0 0 6px 6px;
+}
+
+body.dark-mode .filter-panel {
+    background: #444;
+}
+
+.filter-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: calc(50% - 10px);
+}
+
+.filter-group select {
+    width: 100%;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 0.5rem;
+    border-radius: var(--border-radius-sm);
+    color: var(--text);
+}
+
+.filter-options input {
+    width: 100%;
+}
+
+#filter-games-btn {
+    position: relative;
+}
