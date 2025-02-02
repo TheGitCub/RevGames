@@ -1,0 +1,1199 @@
+/**
+ * Styles for the game creation form and category management functionality.
+ * This CSS file includes styles for the light and dark themes, as well as
+ * responsive styles for different screen sizes.
+ */
+/* Base styles for light theme */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--light-surface);
+    color: var(--light-text);
+    margin: 0;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--light-background);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.game-creation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns the form elements to the left */
+    gap: 10px; /* Adds space between each form element */
+}
+
+.game-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensures label and input align to the left */
+    width: 100%;
+    gap: 10px;
+}
+
+.game-title-container input {
+    width: 300px; /* Control width of the input field */
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.category-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensures label and input align to the left */
+    width: 100%;
+    gap: 10px;
+}
+
+.category-input-container label {
+    font-weight: bold;
+}
+
+.category-input-container input {
+    width: 300px; /* Control width of the input field */
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+#categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start; /* Align items to the top in vertical mode */
+    margin: 20px 0px;
+}
+
+.category {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--light-border);
+    background-color: var(--light-background);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 150px; /* Allow the category to grow and shrink, with a minimum width of 300px */
+    max-width: 100%; /* Ensure the category doesn't grow beyond the container width */
+}
+
+.category-row-view {
+    flex-direction: column; /* Default is vertical view */
+    width: 100%; /* Full width in horizontal view */
+    max-width: none; /* Max width to ensure they don't grow too large */
+    margin-bottom: 0; /* Remove bottom margin in horizontal view */
+    box-sizing: border-box; /* Add this line */
+}
+
+.category-row-view .category {
+    flex-direction: column; /* Default is vertical view */
+    width: 100%; /* Full width in horizontal view */
+    max-width: none; /* Max width to ensure they don't grow too large */
+    margin-bottom: 0; /* Remove bottom margin in horizontal view */
+    box-sizing: border-box; /* Add this line */
+}
+
+.category-row-view .category h3 {
+    text-align: left; /* Align text to the left in horizontal view */
+}
+  
+.category-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    border-radius: 5px;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid var(--light-border);
+    background-color: var(--light-background);
+}
+
+.input-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.delete-container {
+    display: flex;
+    justify-content: center;
+}
+
+.delete-category-btn {
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: var(--light-danger);
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 120px;
+}
+
+
+.category h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--light-primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    padding: 8px 16px;
+}
+
+button:hover {
+    background-color: var(--light-primary-hover);
+}
+
+.answers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.answer {
+    width: 100%;  /* Ensure answer takes up the full width of its parent container */
+    word-wrap: break-word;  /* Forces long words to break and wrap onto the next line */
+    white-space: normal;  /* Prevents the text from staying on a single line */
+    overflow-wrap: break-word;  /* Ensures the word wraps properly within the container */
+    padding: 10px;  /* Adds some space around the text */
+    border: 1px solid var(--light-border);  /* Optional border for visibility */
+    border-radius: 4px;  /* Optional: rounds the corners */
+    box-sizing: border-box;  /* Ensures padding is included in the width calculation */
+    display: flex;
+    flex-direction: row;  /* Arrange elements horizontally (text above button) */
+    align-items: center;  /* Horizontally center content */
+    justify-content: space-between;
+    gap: 10px;
+    background-color: var(--light-background);
+}
+
+.answer:hover {
+    background-color: var(--light-surface);
+}
+
+.answer button {
+    padding: 5px 10px;  /* Adds padding inside the button */
+    background-color: var(--light-danger);  /* Red color for delete button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;  /* Ensures the button behaves like a block element for centering */
+    flex-shrink: 0;
+}
+
+.answer button:hover {
+    background-color: #f22d3b;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+#load-file-input {
+    display: block;
+    margin-top: 10px;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #ccc;
+}
+
+body.dark-mode .category {
+    background-color: #444;
+    border: 1px solid #555;
+}
+
+body.dark-mode .category h3 {
+    color: #fff;
+}
+
+body.dark-mode input[type="text"], 
+body.dark-mode select {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+body.dark-mode input[type="text"]:focus {
+    border-color: #4CAF50;
+}
+
+body.dark-mode button {
+    background-color: #007BFF;
+}
+
+body.dark-mode button:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode .answer {
+    background-color: #555;
+    border: 1px solid #666;
+}
+
+body.dark-mode .answer:hover {
+    background-color: #666;
+}
+
+body.dark-mode #save-button {
+    background-color: #007BFF;
+}
+
+body.dark-mode #save-button:hover {
+    background-color: #0056b3;
+}
+
+header button {
+    padding: 10px;
+    background: none;
+    color: #fff;
+}
+
+body:not(.dark-mode) #theme-toggle .icon {
+    filter: invert(0);
+}
+
+#theme-toggle:hover {
+    background-color: #0000001b;
+}
+
+body.dark-mode #theme-toggle:hover {
+    background-color: #ffffff1b;
+}
+
+#view-toggle {
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#view-toggle:hover {
+    background-color: #3498db;
+}
+
+@media (max-width: 768px) {
+    #categories .answer {
+        width: 100%; /* Stack answers in a single column */
+        gap: 10px;
+    }
+}
+
+/* Styles for the container holding the header, input, and button */
+.header-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    gap: 10px; /* Add spacing between elements */
+    margin-bottom: 20px; /* Space between this container and the answers list */
+    width: 100%; /* Take full width of the parent */
+}
+
+.header-input-container input[type="text"] {
+    width: calc(100% - 20px); /* Full width with some padding */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.header-input-container button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+  
+/* Home Screen Styles */
+#home-screen {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.game-card {
+    background: var(--light-background);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    border: 1px solid var(--light-border);
+}
+
+body.dark-mode .game-card {
+    background-color: #444;
+    border: 1px solid #555;
+}
+
+.game-card h3 {
+    margin: 0 0 10px 0;
+    color: var(--light-text);
+    font-size: 1.4em;
+}
+
+.game-card-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    position: relative;  /* For absolute positioning of play options */
+}
+
+.play-button {
+    position: relative;
+}
+
+.play-icon {
+    transition: opacity 0.3s ease;
+}
+
+.play-options {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.play-option {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play-option:first-child {
+    border-right: 1px solid var(--border-color);
+    border-radius: 6px 0 0 6px;  /* Round left corners */
+}
+
+.play-option:last-child {
+    border-radius: 0 6px 6px 0;  /* Round right corners */
+}
+
+.play-option:not(:hover) {
+    background-color: #4CAF50;
+}
+
+/* Show options and hide icon on hover */
+.play-button:hover .play-icon {
+    opacity: 0;
+}
+
+.play-button:hover .play-options {
+    display: flex;
+}
+
+.game-card-buttons button {
+    flex: 1;
+    padding: 8px 16px;
+}
+
+.game-card-buttons button:nth-child(1) { /* Play button */
+    background-color: var(--light-success);
+}
+
+.game-card-buttons button:nth-child(2) { /* Edit button */
+    background-color: var(--light-primary);
+}
+
+.game-card-buttons button:nth-child(3) { /* Edit button */
+    background-color: var(--light-secondary);
+}
+
+.game-card-buttons button:nth-child(4) { /* Delete button */
+    background-color: var(--light-danger);
+}
+
+/* Dark mode adaptations */
+body.dark-mode .game-card {
+    background-color: #444;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .game-card h3 {
+    color: #fff;
+}
+
+/* Screen transition animations */
+#home-screen, #game-creation-screen {
+    transition: opacity 0.3s ease;
+}
+
+/* Navigation buttons */
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-card-buttons {
+        flex-direction: column;
+    }
+}
+
+#play-screen {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+#play-categories {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+#answers-pool {
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    background: var(--surface-color);
+    border-radius: 8px;
+    justify-content: center;
+}
+
+#multiple-choice-container {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--surface-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.play-category {
+    background: var(--light-background);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: grid;
+    gap: 10px;
+    border: 1px solid var(--light-border);
+}
+
+.play-answers-list {
+    min-height: 100px;
+    border: 2px dashed var(--light-border);
+    border-radius: 4px;
+    padding: 10px;
+    background-color: var(--light-surface);
+}
+
+body.dark-mode .play-answers-list {
+    background-color: #333;
+    border-color: #666;
+}
+
+
+
+.play-category h3 {
+    margin: 0;
+}
+
+#answers-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.play-answer {
+    background: #fff;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: move;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.play-answer.dragging {
+    opacity: 1;
+    cursor: grabbing;
+}
+
+.play-answer.correct {
+    background: #4CAF50;
+    color: white;
+}
+
+.play-answer.wrong {
+    background: #f44336;
+    color: white;
+}
+
+body.dark-mode .play-category {
+    background-color: #444;
+    border: 1px solid #555;
+    color: #fff;
+}
+
+body.dark-mode .play-answer {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+body.dark-mode .play-answer.correct {
+    background: #226622;
+}
+
+body.dark-mode .play-answer.wrong {
+    background: #662222;
+}
+
+body.dark-mode #answers-pool {
+    background-color: #333;
+}
+
+body.dark-mode .game-stats {
+    color: #fff;
+}
+
+body.dark-mode #timer,
+body.dark-mode #score {
+    color: #fff;
+}
+
+body.dark-mode #back-from-play {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+body.dark-mode #back-from-play:hover {
+    background-color: #0056b3;
+}
+
+.remaining-count-box {
+    position: absolute;
+    top: -10px;  /* Move up to sit on top of the answer box */
+    right: -10px;  /* Move right to sit slightly outside the answer box */
+    background-color: #2980b9;
+    color: white;
+    padding: 2px 6px;  /* Reduce padding for a more compact look */
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8em;
+    z-index: 1;  /* Ensure it appears above the answer box */
+}
+
+/* Modal Styles */
+
+/* Add styles for the import preview modal */
+#import-preview-modal {
+    display: none; /* Hide by default */
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* New styles for the button container */
+.import-preview-selection-buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.import-preview-action-buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+#import-preview-modal th, #import-preview-modal td {
+    padding: 8px;
+}
+
+/* Dark theme for the modal */
+body.dark-mode #import-preview-table {
+    background-color: #444;
+}
+
+body.dark-mode #import-preview-modal td {
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode #import-preview-modal th {
+    background-color: #444;
+}
+
+body.dark-mode #import-preview-modal button:hover {
+    background-color: #0056b3;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: inherit;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Default Modal Style */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width:max-content;
+  height: max-content;
+  max-width: 90%;
+  max-height: 90%;
+  background-color: #fff;
+}
+
+.modal .modal-content {
+  background-color: inherit;
+  width: unset;
+  gap: 10px;
+  border: none;
+  display: grid;
+}
+
+.modal h3 {
+  margin: 0;
+}
+
+.modal th, .modal td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.modal th {
+  background-color: #f0f0f0;
+}
+
+.modal .modal-buttons {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.modal .modal-buttons button {
+  margin-left: 10px;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .modal {
+  background-color: inherit;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .modal th {
+  background-color: #555;
+}
+
+body.dark-mode .modal .modal-buttons {
+  margin-top: 20px;
+  text-align: right;
+}
+
+#import-preview-table {
+    max-height: 400px;
+    overflow-y: auto;
+    display: block;
+    border-collapse: collapse;
+}
+
+#import-preview-table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* adjust the max-width to your needs */
+}
+
+#import-preview-table td:hover {
+    overflow: visible;
+    white-space: normal;
+    z-index: 1;
+}
+
+.context-menu {
+    background-color: inherit;
+    border: 0.5px #ccc;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.context-menu button {
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    border-radius: 0;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    filter: invert(1);
+}
+
+body.dark-mode .icon {
+    filter: invert(1);
+}
+
+[data-feather] {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+body.dark-mode [data-feather] {
+    stroke: #fff;
+}
+
+.rotate-90 {
+    transform: rotate(90deg);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode header{
+    background: #444;
+}
+
+
+/* Tooltip Styles */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+[data-tooltip]:after {
+    content: '';
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Dark mode tooltip styles */
+body.dark-mode [data-tooltip]:before {
+    background-color: #666;
+    color: #fff;
+}
+
+body.dark-mode [data-tooltip]:after {
+    border-top-color: #666;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#back-to-home {
+    margin-right: 10px;
+}
+
+#main-title,
+#creation-title,
+#gameplay-title {
+    margin: 0;
+    transition: opacity 0.3s ease;
+}
+
+#confirm-import-button.no-categories {
+    position: relative;
+}
+
+#confirm-import-button.no-categories::after {
+    content: 'No categories selected';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    max-width: 80%;
+}
+
+#confirm-import-button.no-categories img {
+    visibility: hidden;
+}
+
+.multiple-choice-question {
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+    background-color: var(--light-background);
+    border: 1px solid var(--light-border);
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+}
+
+.option-button {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--light-background);
+    color: var(--light-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--light-border);
+}
+
+/* Hover state - only when not disabled */
+.option-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--light-surface);
+}
+
+/* Disabled state */
+.option-button:disabled {
+    cursor: unset;
+    opacity: 0.7;
+    transform: none;
+}
+
+/* Dark mode adjustments */
+
+body.dark-mode .option-button:hover:not(:disabled) {
+    background-color: #666;
+}
+
+body.dark-mode .option-button.correct {
+    background-color: #226622;
+}
+
+/* Navigation Button Styles */
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-pill);
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+/* Multiple Choice Question Styles */
+
+.option-button:hover:not(:disabled) {
+    background-color: var(--color-background-hover);
+}
+
+
+/* Pagination List Styles */
+.pagination-list {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.pagination-list li {
+    flex: 1;
+    margin: 0;
+    position: relative;
+}
+
+/* Pagination Arrow and Number Styles */
+.pagination-arrow,
+.pagination-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    border: 1px solid var(--light-border);
+    border-radius: 0;
+    background-color: var(--light-background);
+    color: var(--light-text);
+    font-weight: bold;
+}
+
+.pagination-list li:first-child .pagination-arrow {
+    border-top-left-radius: var(--border-radius-md);
+    border-bottom-left-radius: var(--border-radius-md);
+}
+
+.pagination-list li:last-child .pagination-arrow {
+    border-top-right-radius: var(--border-radius-md);
+    border-bottom-right-radius: var(--border-radius-md);
+}
+
+.pagination-arrow:disabled {
+    opacity: 0.5;
+    cursor: unset;
+}
+
+body:not(.dark-mode) .pagination-arrow img {
+    filter: invert(0);
+}
+
+body.dark-mode .pagination-arrow:hover:not(.current), body.dark-mode .pagination-number:hover:not(.current):not(.correct):not(.wrong):not(.skipped):not([disabled]) {
+    background-color: #666;
+}
+
+body.dark-mode .pagination-arrow:disabled {
+    background-color: #666;
+}
+
+body.dark-mode .pagination-arrow,
+body.dark-mode .pagination-number {
+    border-color: #666;
+    background-color: #555;
+    padding: 0;
+    color: white;
+}
+
+body.dark-mode .pagination-number.current {
+    background-color: #666;
+}
+
+/* Disable hover effects for ellipsis buttons */
+.pagination-number[disabled] {
+    pointer-events: none;
+    opacity: 1;
+}
+
+body.dark-mode .pagination-number[disabled] {
+    background-color: #555;
+    opacity: 1;
+}
+
+body.dark-mode .pagination-number.correct {
+    background: #226622; /* Dark green to indicate correct answer */
+}
+body.dark-mode .pagination-number.correct.current {
+    background: #2b7f2b; /* 10% lighter dark green */
+}
+
+body.dark-mode .pagination-number.wrong {
+    background: #662222; /* Dark red to indicate wrong answer */
+}
+body.dark-mode .pagination-number.wrong.current {
+    background: #7f2b2b; /* 10% lighter dark red */
+}
+
+body.dark-mode .pagination-number.skipped {
+    background: #ff980070; /* Dark yellow to indicate skipped question */
+}
+body.dark-mode .pagination-number.skipped.current {
+    background: #ffac2670; /* 10% lighter dark yellow */
+}
+
+/* Answer status indicators - Light mode */
+.pagination-number.correct {
+    background-color: var(--light-success);
+}
+
+.pagination-number.wrong {
+    background-color: var(--light-danger);
+}
+
+.pagination-number.skipped {
+    background-color: var(--light-warning);
+}
+
+.pagination-number.correct.current {
+  background-color: var(--light-success);
+  opacity: 0.9;
+}
+
+.pagination-number.wrong.current {
+  background-color: var(--light-danger);
+  opacity: 0.9;
+}
+
+.pagination-number.skipped.current {
+  background-color: var(--light-warning);
+  opacity: 0.9;
+}
+
+/* Hover states - Light mode */
+.pagination-arrow:hover:not(:disabled),
+.pagination-number:hover:not(.current):not(.correct):not(.wrong):not(.skipped):not([disabled]) {
+    background-color: #f5f5f5;
+}
+
+/* Disabled state */
+.pagination-arrow:disabled,
+.pagination-number[disabled] {
+    background-color: #f5f5f5;
+    color: #999;
+}
+
+/* Icon button styles */
+.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background: var(--background-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-button .icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Ensure proper spacing in button containers */
+.delete-container {
+    display: flex;
+    gap: 8px;
+}
+
+.answer-buttons {
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+}

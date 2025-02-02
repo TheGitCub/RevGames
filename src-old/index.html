@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rev Games</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components/conflict-modal.css">
+    <link rel="stylesheet" href="css/components/games-library-header.css">
+    <script type="module" src="js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <button id="back-to-home" class="secondary-button" data-tooltip="Back to Home" style="display: none;">
+                <img src="node_modules/feather-icons/dist/icons/arrow-left.svg" alt="Back to Home" class="icon">
+            </button>
+            <h1 id="main-title">Games</h1>
+            <h1 id="creation-title" style="display: none;">Game Creation</h1>
+            <h1 id="gameplay-title" style="display: none;">Gameplay</h1>
+        </div>
+        <button id="theme-toggle" data-tooltip="Toggle Theme">
+            <img src="node_modules/feather-icons/dist/icons/moon.svg" alt="Toggle Dark Mode" class="icon">
+        </button>
+    </header>
+    
+    <!-- Home Screen -->
+    <div id="home-screen">
+        <!-- Games Library Container -->
+        <div class="games-library-header-container">
+            <div id="games-library-header">
+                <div class="games-library-title">
+                    <h2>Games Library</h2>
+                </div>
+                <div class="games-library-actions">
+                    <button id="filter-games-btn" class="secondary-button" data-tooltip="Filter Games">
+                        <img src="node_modules/feather-icons/dist/icons/filter.svg" alt="Filter Games" class="icon">
+                    </button>
+                    <button id="create-game-btn" class="primary-button" data-tooltip="Create New Game">
+                        <img src="node_modules/feather-icons/dist/icons/plus.svg" alt="Create New Game" class="icon">
+                    </button>
+                </div>
+            </div>
+            <!-- Filter Panel (Initially Hidden) -->
+            <div id="filter-panel" class="filter-panel" style="display: none;">
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <input type="text" id="search-games" placeholder="Search games...">
+                    </div>
+                    <div class="filter-group">
+                        <select id="sort-games">
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                            <option value="date-new">Newest First</option>
+                            <option value="date-old">Oldest First</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="games-library">
+            <div id="games-grid"></div>
+        </div>
+    </div>
+
+    <!-- Game Creation Screen -->
+    <div id="game-creation-screen" style="display: none;">
+        <button id="view-toggle" data-tooltip="Toggle View Layout">
+            <img src="node_modules/feather-icons/dist/icons/columns.svg" alt="Toggle View" class="icon">
+        </button>
+
+        <!-- Game Creation Form -->
+        <h1>Create and Play Category Sorting Game</h1>
+        <div class="game-creation">
+            <h2>Create New Game</h2>
+            <div class="game-title-container">
+                <label for="game-title">Game Title:</label>
+                <input type="text" id="game-title" placeholder="Enter Game Title">
+            </div>
+            <div class="category-input-container">
+                <label for="category-input">Category Name:</label>
+                <input type="text" id="category-input" placeholder="Enter category name">
+            </div>
+            <button id="add-category-button">
+                <img src="node_modules/feather-icons/dist/icons/plus.svg" alt="Add Category" class="icon"> Add Category
+            </button>
+        </div>
+        
+        <!-- Categories container -->
+        <div id="categories"></div>
+
+        <!-- Game controls container -->
+        <div class="game-controls">
+            <button id="primary-save-game-button" data-tooltip="Save Game">
+                <img src="node_modules/feather-icons/dist/icons/save.svg" alt="Save Game" class="icon"> Save Game
+            </button>
+            <button id="load-button" data-tooltip="Upload Game File">
+                <img src="node_modules/feather-icons/dist/icons/upload.svg" alt="Upload Game" class="icon"> Upload Game
+            </button>
+            <input type="file" id="load-file-input" style="display: none;">
+            <button id="import-button" data-tooltip="Import Categories from CSV">
+                <img src="node_modules/feather-icons/dist/icons/plus-square.svg" alt="Import Categories" class="icon"> Import Categories
+            </button>
+            <input type="file" id="import-file-input" accept=".csv, .xlsx" style="display: none;">
+        </div>
+    </div>
+
+    <!-- Play Screen -->
+    <div id="play-screen" style="display: none;">
+        <h1 id="play-game-title"></h1>
+        <div class="game-stats">
+            <span id="score">Score: 0</span>
+            <span id="timer">Time: 0:00</span>
+        </div>
+        
+        <!-- Categories Game Mode -->
+        <div id="play-categories"></div>
+        <div id="answers-pool"></div>
+        
+        <!-- Multiple Choice Game Mode -->
+        <div id="multiple-choice-container"></div>
+    </div>
+
+    <!-- Preview Table for Imported CSV Data -->
+    <div id="import-preview-modal" class="modal">
+        <div class="modal-content">
+            <h3>Import Preview</h3>
+            <table id="import-preview-table" border="1">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all-checkbox"></th>
+                        <th>Category</th>
+                        <th>Answers</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="import-preview-action-buttons-container">
+                <button id="cancel-import-button">
+                    <img src="node_modules/feather-icons/dist/icons/x.svg" alt="Cancel" class="icon">
+                </button>
+                <button id="confirm-import-button">
+                    <img src="node_modules/feather-icons/dist/icons/check.svg" alt="Confirm Import" class="icon">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for category conflict handling -->
+    <div id="category-conflict-modal" class="modal">
+        <div class="modal-content">
+            <h3>Conflicting Imported Categories</h3>
+            <p>Choose an action for the conflicting categories:</p>
+            <table id="category-conflict-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Populated dynamically -->
+                </tbody>
+            </table>
+            <div class="modal-buttons">
+                <button id="modal-cancel-btn">Cancel</button>
+                <button id="modal-confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Modal -->
+    <div id="popup-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h3 id="popup-modal-title"></h3>
+            <p id="popup-modal-content"></p>
+            <div class="modal-buttons">
+                <button id="popup-modal-ok-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal for Unsaved Changes -->
+    <div id="unsaved-changes-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Unsaved Changes</h3>
+            <p>Would you like to save your changes?</p>
+            <div class="modal-buttons">
+                <button id="discard-changes-btn">
+                    <img src="node_modules/feather-icons/dist/icons/x.svg" alt="Discard" class="icon">
+                </button>
+                <button id="reminder-save-changes-button">
+                    <img src="node_modules/feather-icons/dist/icons/check.svg" alt="Save" class="icon">
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

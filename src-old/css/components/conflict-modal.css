@@ -1,0 +1,144 @@
+/* Conflict Modal Styles */
+.conflict-modal {
+    max-width: 90vw;
+    overflow-y: auto;
+}
+
+.conflict-group {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.categories-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.conflict-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.conflict-modal .existing-category.category,
+.conflict-modal .new-categories {
+    flex: 1 1 150px;
+}
+
+.conflict-modal .category {
+    min-width: 300px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--background-color);
+    flex: auto;
+}
+
+.conflict-modal .category-content {
+    padding: 15px;
+}
+
+.conflict-modal .answers-list {
+    margin-top: 10px;
+}
+
+.conflict-modal .answer.new {
+    border-left: 3px solid var(--success-color);
+}
+
+.conflict-modal .answer.missing {
+    border-left: 3px solid var(--danger-color);
+}
+
+.conflict-modal .answer-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.conflict-modal .icon-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--background-color);
+    cursor: pointer;
+}
+
+.conflict-modal .icon-button:hover {
+    background: var(--background-color-light);
+}
+
+.conflict-modal .icon-button img {
+    width: 16px;
+    height: 16px;
+}
+
+.conflict-modal .merge-preview {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--background-color-light);
+    border-radius: 8px;
+}
+
+.conflict-modal .merge-lists-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.conflict-modal .merge-list {
+    flex: 1;
+    padding: 15px;
+    background: var(--background-color);
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+}
+
+.conflict-modal .draggable-answer {
+    cursor: move;
+}
+
+.conflict-modal .dragging {
+    opacity: 0.5;
+}
+
+.conflict-action.selected {
+    background-color: #0056b3;
+    box-shadow: inset 0 0 0 1px #ffffff5e;
+    transition: box-shadow 0.3s ease;
+}
+
+.conflict-action.selected:hover{
+    background-color: #0056b3;
+}
+
+.conflict-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.conflict-group-header .action-skip {
+    padding: 4px;
+    min-width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+}
+
+.conflict-group-header .action-skip:hover {
+    background: var(--background-color-light);
+    border-radius: 4px;
+}
+
+.conflict-group-header .action-skip img {
+    width: 16px;
+    height: 16px;
+}
